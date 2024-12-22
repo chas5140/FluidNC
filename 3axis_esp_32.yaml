@@ -1,0 +1,95 @@
+name: "CPH_01"
+board: "ESP-32"
+
+stepping:
+  engine: RMT
+  idle_ms: 250
+  dir_delay_us: 1
+  pulse_us: 2
+  disable_delay_us: 0
+
+axes:
+  shared_stepper_disable_pin: NO_PIN
+  
+  x:
+    steps_per_mm: 800
+    max_rate_mm_per_min: 2000
+    acceleration_mm_per_sec2: 25
+    max_travel_mm: 1000
+    homing:
+      cycle: 2
+      mpos_mm: 10
+      positive_direction: false
+    
+    motor0:
+      limit_all_pin: gpio.23:low:pu
+      stepstick:
+        direction_pin: gpio.4
+        step_pin: gpio.2
+    motor1:
+      null_motor:
+
+  y:
+    steps_per_mm: 800
+    max_rate_mm_per_min: 2000
+    acceleration_mm_per_sec2: 25
+    max_travel_mm: 1000
+    homing:
+      cycle: 2
+      mpos_mm: 10
+      positive_direction: false
+
+    motor0:
+      limit_all_pin: gpio.4:low:pu
+      stepstick:
+        direction_pin: gpio.15
+        step_pin: gpio.26
+    motor1:
+      null_motor:
+
+  z:
+    steps_per_mm: 800
+    max_rate_mm_per_min: 2000
+    acceleration_mm_per_sec2: 25
+    max_travel_mm: 1000
+    homing:
+      cycle: 1
+      mpos_mm: 10
+      positive_direction: true
+
+    motor0:
+      limit_all_pin: gpio.16:low:pu
+      stepstick:
+        direction_pin: gpio.33
+        step_pin: gpio.27
+    motor1:
+      null_motor:
+
+spi:
+  miso_pin: NO_PIN
+  mosi_pin:  NO_PIN
+  sck_pin:  NO_PIN
+
+sdcard:
+  cs_pin:  NO_PIN
+  card_detect_pin: NO_PIN
+
+coolant:
+  flood_pin:  NO_PIN
+  mist_pin:   NO_PIN
+
+        
+probe:
+  pin:  NO_PIN
+
+PWM:
+  pwm_hz: 5000
+  output_pin: gpio.2
+  enable_pin: gpio.22
+  direction_pin: NO_PIN
+  disable_with_s0: false
+  s0_with_disable: true
+  spinup_ms: 0
+  spindown_ms: 0
+  tool_num: 0
+  speed_map: 0=0% 10000=100%
